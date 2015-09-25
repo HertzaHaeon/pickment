@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pickment by HertzaHaeon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Pickment</h1>
+      <h2 class="project-tagline">An angular color picker</h2>
+      <a href="https://github.com/HertzaHaeon/pickment" class="btn">View on GitHub</a>
+      <a href="https://github.com/HertzaHaeon/pickment/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/HertzaHaeon/pickment/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="pickment-090" class="anchor" href="#pickment-090" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pickment 0.9.0</h1>
+
+<p>A minimalistic Angular color picker directive. </p>
+
+<p>~12 kb minified. Only depends on <a href="https://github.com/bgrins/TinyColor">TinyColor</a>.</p>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Include Pickment files and dependencies.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>tinycolor.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>pickment.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+<span class="pl-c">&lt;!-- Color modes are optional, but you need at least one --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>pickment-hue.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Inject Pickment and one or more Pickment modes into your Angular app:</p>
+
+<div class="highlight highlight-source-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>pickment<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>pickment-hue<span class="pl-pds">'</span></span>]);</pre></div>
+
+<p>Pickment is used with the pickment element with its ng-model holding the CSS color value.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">pickment</span> <span class="pl-e">ng-model</span>=<span class="pl-s"><span class="pl-pds">"</span>color<span class="pl-pds">"</span></span> <span class="pl-e">preview</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">alpha</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-e">size</span>=<span class="pl-s"><span class="pl-pds">"</span>256<span class="pl-pds">"</span></span> <span class="pl-e">mode</span>=<span class="pl-s"><span class="pl-pds">"</span>hue<span class="pl-pds">"</span></span> <span class="pl-e">format</span>=<span class="pl-s"><span class="pl-pds">"</span>rgb<span class="pl-pds">"</span></span> <span class="pl-e">position</span>=<span class="pl-s"><span class="pl-pds">"</span>left top, left top<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">pickment</span>&gt;</pre></div>
+
+<p>Using the element requires appropriate styles for the pickment class element it's transformed to. For example:</p>
+
+<div class="highlight highlight-source-css"><pre><span class="pl-e">.pickment</span> {
+  <span class="pl-c1"><span class="pl-c1">min-width</span></span>: <span class="pl-c1">1<span class="pl-k">em</span></span>;
+  <span class="pl-c1"><span class="pl-c1">min-height</span></span>: <span class="pl-c1">1<span class="pl-k">em</span></span>;
+  <span class="pl-c1"><span class="pl-c1">vertical-align</span></span>: <span class="pl-c1">middle</span>;
+  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">inline-block</span>;
+  <span class="pl-c1"><span class="pl-c1">cursor</span></span>: <span class="pl-c1">pointer</span>;
+}</pre></div>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preview</td>
+<td>true</td>
+<td>Show color preview element</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>true</td>
+<td>Show alpha selection element</td>
+</tr>
+<tr>
+<td>size</td>
+<td>256</td>
+<td>Base size of the picker element</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>'hue'</td>
+<td>Color selection mode (hue, brightness or saturation)</td>
+</tr>
+<tr>
+<td>format</td>
+<td>'rgb'</td>
+<td>Color format (anything Tinycolor supports)</td>
+</tr>
+<tr>
+<td>position</td>
+<td>'left top, left top'</td>
+<td>Position and origin of the color picker element</td>
+</tr>
+</tbody>
+</table>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/HertzaHaeon/pickment">Pickment</a> is maintained by <a href="https://github.com/HertzaHaeon">HertzaHaeon</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
