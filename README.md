@@ -6,6 +6,8 @@ A minimalistic Angular color picker directive.
 
 ## Demo
 
+[Try Pickment out](https://cdn.rawgit.com/HertzaHaeon/pickment/0b4fb5daeca713b7fbde07d81d91ba970e261ca2/demo/index.html)
+
 ## Documentation
 
 ### Usage
