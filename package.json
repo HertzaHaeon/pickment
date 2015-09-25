@@ -1,0 +1,30 @@
+{
+  "version": "0.9.0",
+  "name": "pickment",
+  "description": "Minimalistic color picker for Angular",
+  "url": "http://github.com/hertzahaeon/pickment",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hertzahaeon/pickment"
+  },
+  "keywords": [
+    "color",
+    "picker",
+    "angular",
+    "directive"
+  ],
+  "author": "Mikael Tilly <mikael.tilly@gmail.com> (http://miketilly.com)",
+  "contributors": [],
+  "readmeFilename": "README.md",
+  "license": "MIT",
+  "main": "./src/ng-pickment.js",
+  "directories": {},
+  "dependencies": {
+    "angular": "1.4.x",
+    "tinycolor": "bgrins/TinyColor#1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.9.1"
+  }
+}

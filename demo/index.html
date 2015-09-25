@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>pickment demo</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    div.controls {
+      margin: 0 auto;
+      max-width: 800px;
+      overflow: hidden;
+    }
+    div.controls label {
+      margin-right: 1em;
+      float: left;
+    }
+    div.examples {
+      margin: 0 auto;
+      max-width: 800px;
+      min-height: 400px;
+      clear: both;
+    }
+    div.examples input {
+      vertical-align: middle;
+    }
+
+    .pickment {
+      min-width: 1.625em;
+      min-height: 1.625em;
+      vertical-align: middle;
+      display: inline-block;
+      cursor: pointer;
+    }
+  </style>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tinycolor/1.1.2/tinycolor.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+  <script type="text/javascript" src="../src/ng-pickment.js"></script>
+  <script type="text/javascript" src="../src/ng-pickment-hue.js"></script>
+  <script type="text/javascript" src="../src/ng-pickment-brightness.js"></script>
+  <script type="text/javascript" src="../src/ng-pickment-saturation.js"></script>
+  <script>
+    angular.module('pickmentDemo', ['pickment', 'pickment-hue', 'pickment-brightness', 'pickment-saturation'])
+      .controller('pickmentDemoController', function($scope) {
+        this.sizes = [64, 128, 256, 512];
+        this.modes = ['hue', 'brightness', 'saturation'];
+        this.formats = ['hex', 'rgb', 'hsl'];
+        this.positions = ['left top', 'center top', 'right top', 'left middle', 'center middle', 'right middle', 'left bottom', 'center bottom', 'right bottom'];
+        this.origins = ['left top', 'center top', 'right top', 'left middle', 'center middle', 'right middle', 'left bottom', 'center bottom', 'right bottom'];
+        this.preview = true;
+        this.alpha = true;
+        this.size = 256;
+        this.mode = 'hue';
+        this.format = 'rgb';
+        this.position = 'left middle';
+        this.origin = 'left middle';
+        this.color = [];
+        for (var c = 0, cl = 4 ; c < cl ; c++) {
+          this.color[c] = tinycolor.random().setAlpha(1).toRgbString();
+        }
+        $scope.$on('pickment.open', function(e, data) {
+          console.log('pickment.open', data)
+        });
+          $scope.$on('pickment.pickcolor', function(e, data) {
+          console.log('pickment.pickcolor', data)
+        });
+          $scope.$on('pickment.close', function(e, data) {
+          console.log('pickment.close', data)
+        });
+      });
+  </script>
+</head>
+<body ng-app="pickmentDemo" ng-controller="pickmentDemoController as pickmentCtrl">
+  <div class="controls">
+    <h1>Pickment demo</h1>
+    <p>
+      <label>Size<br>
+        <select ng-model="pickmentCtrl.size" ng-options="opt as opt for opt in pickmentCtrl.sizes"></select>
+      </label>
+      <label>Mode<br>
+        <select ng-model="pickmentCtrl.mode" ng-options="opt as opt for opt in pickmentCtrl.modes"></select>
+      </label>
+      <label>Format<br>
+        <select ng-model="pickmentCtrl.format" ng-options="opt as opt for opt in pickmentCtrl.formats"></select>
+      </label>
+      <label>Position<br>
+        <select ng-model="pickmentCtrl.position" ng-options="opt as opt for opt in pickmentCtrl.positions"></select>
+      </label>
+      <label>Origin<br>
+        <select ng-model="pickmentCtrl.origin" ng-options="opt as opt for opt in pickmentCtrl.origins"></select>
+      </label>
+      <label><br>
+        <input type="checkbox" ng-model="pickmentCtrl.preview"> Preview
+      </label>
+      <label><br>
+        <input type="checkbox" ng-model="pickmentCtrl.alpha"> Alpha
+      </label>
+    </p>
+  </div>
+  <div class="examples">
+    <p ng-repeat="color in pickmentCtrl.color">
+      <input type="text" ng-model="color"><pickment preview="{{pickmentCtrl.preview}}" alpha="{{pickmentCtrl.alpha}}"  size="{{pickmentCtrl.size}}" mode="{{pickmentCtrl.mode}}" format="{{pickmentCtrl.format}}" position="{{pickmentCtrl.position}},{{pickmentCtrl.origin}}" ng-model="color"></pickment>
+    </p>
+  </div>
+</body>
+</html>
